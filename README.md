@@ -1,70 +1,174 @@
-# Getting Started with Create React App
+# 🚀 Live Code Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Code Editor adalah aplikasi web yang memungkinkan Anda mengedit HTML, CSS, dan JavaScript secara real-time dengan preview langsung. Aplikasi ini dibangun menggunakan React dan Monaco Editor untuk pengalaman coding yang optimal.
 
-## Available Scripts
+## ✨ Fitur
 
-In the project directory, you can run:
+- **Editor Multi-Bahasa**: Mendukung HTML, CSS, dan JavaScript dengan syntax highlighting
+- **Live Preview**: Melihat hasil kode secara real-time tanpa refresh
+- **Layout Responsif**: Tampilan yang optimal di desktop dan mobile
+- **UI Modern**: Interface yang menarik dengan gradient dan glassmorphism effect
+- **Auto-save**: Kode tersimpan otomatis saat mengetik
 
-### `npm start`
+## 🛠️ Teknologi yang Digunakan
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React 19.1.0** - Framework JavaScript
+- **Monaco Editor** - Code editor yang powerful
+- **CSS3** - Styling modern dengan gradient dan animasi
+- **HTML5** - Struktur aplikasi
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Instalasi
 
-### `npm test`
+### Prerequisites
+Pastikan Anda telah menginstall:
+- [Node.js](https://nodejs.org/) (versi 14 atau lebih baru)
+- [npm](https://www.npmjs.com/) atau [yarn](https://yarnpkg.com/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Clone Repository
+```bash
+git clone https://github.com/Frnss24/CODE-EDITOR-NEW.git
+cd CODE-EDITOR-NEW
+```
 
-### `npm run build`
+### Install Dependencies
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Jalankan Aplikasi
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Aplikasi akan terbuka di browser Anda di `http://localhost:3000`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🎯 Cara Menggunakan
 
-### `npm run eject`
+### 1. Memulai Coding
+- Buka aplikasi di browser
+- Anda akan melihat tiga editor: HTML, CSS, dan JavaScript
+- Live preview akan muncul di bagian bawah
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Menulis HTML
+```html
+<h1>Hello World!</h1>
+<p>Ini adalah paragraf pertama saya</p>
+<div id="container">
+  <button onclick="showMessage()">Klik Saya</button>
+</div>
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Styling dengan CSS
+```css
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+button:hover {
+  background: #ff5252;
+  transform: scale(1.05);
+}
+```
 
-## Learn More
+### 4. Menambahkan JavaScript
+```javascript
+function showMessage() {
+  alert('Hello dari JavaScript!');
+}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+// Menambahkan elemen dinamis
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('container');
+  if (container) {
+    const newElement = document.createElement('p');
+    newElement.textContent = 'Elemen ini dibuat dengan JavaScript!';
+    container.appendChild(newElement);
+  }
+});
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 5. Melihat Hasil
+- Setiap perubahan yang Anda buat akan langsung terlihat di live preview
+- Gunakan tombol "🔄 Refresh Preview" jika preview tidak update otomatis
 
-### Code Splitting
+## 📱 Responsive Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Aplikasi ini responsif dan dapat digunakan di berbagai ukuran layar:
+- **Desktop**: Tiga editor sejajar dengan preview di bawah
+- **Tablet**: Editor tersusun vertikal dengan preview di bawah
+- **Mobile**: Layout yang dioptimalkan untuk layar kecil
 
-### Analyzing the Bundle Size
+## 🔧 Scripts yang Tersedia
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+# Menjalankan aplikasi dalam mode development
+npm start
 
-### Making a Progressive Web App
+# Build aplikasi untuk production
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Menjalankan test
+npm test
 
-### Advanced Configuration
+# Eject dari Create React App (tidak dapat dibatalkan)
+npm run eject
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📁 Struktur Proyek
 
-### Deployment
+```
+CODE-EDITOR-NEW/
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+├── src/
+│   ├── App.js          # Komponen utama
+│   ├── App.css         # Styling utama
+│   ├── index.js        # Entry point
+│   └── index.css       # Global styling
+├── package.json
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🤝 Kontribusi
 
-### `npm run build` fails to minify
+Kontribusi selalu diterima! Jika Anda ingin berkontribusi:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork repository ini
+2. Buat branch baru (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan Anda (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buka Pull Request
+
+## 📄 Lisensi
+
+Proyek ini open source dan tersedia di bawah lisensi MIT.
+
+## 👨‍💻 Author
+
+**Franzzz Sinaga**
+- GitHub: [@Frnss24](https://github.com/Frnss24)
+
+## 🙏 Acknowledgments
+
+- [Monaco Editor](https://microsoft.github.io/monaco-editor/) - Code editor yang powerful
+- [React](https://reactjs.org/) - Framework JavaScript
+- [Create React App](https://create-react-app.dev/) - Build tool
+
+---
+
+⭐ Jika proyek ini membantu Anda, jangan lupa untuk memberikan star di repository ini!
