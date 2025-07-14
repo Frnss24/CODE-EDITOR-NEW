@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import './App.css';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 function App() {
   const [htmlCode, setHtmlCode] = useState('<h2>Hello User</h2>');
@@ -10,7 +12,7 @@ function App() {
 
   // Gabungkan semua kode menjadi satu dokumen HTML
   const getFullHtml = () => {
-    return `<!DOCTYPE html><html><head><style>${cssCode}</style></head><body>${htmlCode}<script>${jsCode}<\/script></body></html>`;
+    return `<!DOCTYPE html><html><head><style>${cssCode}</style></head><body>${htmlCode}<script>${jsCode}<' + '/script></body></html>`;
   };
 
   // Force preview refresh
@@ -18,14 +20,29 @@ function App() {
     setPreviewKey(prev => prev + 1);
   };
 
+  // Fungsi download ZIP
+  const handleDownloadZip = async () => {
+    const zip = new JSZip();
+    zip.file('index.html', htmlCode);
+    zip.file('style.css', cssCode);
+    zip.file('script.js', jsCode);
+    const content = await zip.generateAsync({ type: 'blob' });
+    saveAs(content, 'my-code-editor.zip');
+  };
+
   return (
     <div className="app">
       <header className="header">
         <h1>🚀 Live Code Editor</h1>
         <p>Edit HTML, CSS, dan JavaScript secara real-time</p>
-        <button onClick={refreshPreview} className="refresh-btn">
-          🔄 Refresh Preview
-        </button>
+        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
+          <button onClick={refreshPreview} className="refresh-btn">
+            🔄 Refresh Preview
+          </button>
+          <button onClick={handleDownloadZip} className="download-btn">
+            ⬇️ Download ZIP
+          </button>
+        </div>
       </header>
 
       <div className="vertical-layout">
@@ -88,13 +105,14 @@ function App() {
               title="Live Preview"
               className="preview-frame"
               sandbox="allow-scripts allow-same-origin"
+              style={{width: '100%', height: '40vh'}}
             />
           </div>
         </div>
       </div>
 
       <footer className="footer">
-        <p>Made with ❤️ - Franzzz Sinaga</p>
+        <p>Made with ❤️ - Franzzz</p>
       </footer>
       {/* Floating GitHub Box */}
       <div className="github-float-box">
