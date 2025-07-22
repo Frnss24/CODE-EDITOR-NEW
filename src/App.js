@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import './App.css';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
+const STORAGE_KEY = 'codeEditor';
+
 function App() {
-  const [htmlCode, setHtmlCode] = useState('<h2>Hello User</h2>');
-  const [cssCode, setCssCode] = useState('body{\n  text-align:center;\n}');
-  const [jsCode, setJsCode] = useState('');
+  const [htmlCode, setHtmlCode] = useState(() => {
+    const saved = localStorage.getItem(`${STORAGE_KEY}.html`);
+    return saved || '<h2>Hello User</h2>';
+  });
+  const [cssCode, setCssCode] = useState(() => {
+    const saved = localStorage.getItem(`${STORAGE_KEY}.css`);
+    return saved || 'body{\n  text-align:center;\n}';
+  });
+  const [jsCode, setJsCode] = useState(() => {
+    const saved = localStorage.getItem(`${STORAGE_KEY}.js`);
+    return saved || '';
+  });
   const [previewKey, setPreviewKey] = useState(0);
 
   // Gabungkan semua kode menjadi satu dokumen HTML
@@ -29,6 +40,13 @@ function App() {
     const content = await zip.generateAsync({ type: 'blob' });
     saveAs(content, 'my-code-editor.zip');
   };
+
+  // Tambahkan useEffect untuk auto-save
+  useEffect(() => {
+    localStorage.setItem(`${STORAGE_KEY}.html`, htmlCode);
+    localStorage.setItem(`${STORAGE_KEY}.css`, cssCode);
+    localStorage.setItem(`${STORAGE_KEY}.js`, jsCode);
+  }, [htmlCode, cssCode, jsCode]);
 
   return (
     <div className="app">
